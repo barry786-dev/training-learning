@@ -1,0 +1,22 @@
+{
+  "name": "webdev-learn",
+  "version": "1.0.0",
+  "description": "full-stack webdev learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "sass",
+    "bootstarp",
+    "express",
+    "react"
+  ],
+  "author": "Mohamed Salim Barry",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.35.2"
+  }
+}
