@@ -1,0 +1,19 @@
+// modify bootstrap variables (change ingredients)
+$primary : red;
+
+// translate bootstrap (execute the cooking recipe)
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// @use "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// fine-tune the result, override created classes from Bootstrap (decorate the dish)
+
+.card {
+    border-radius: 2rem;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
