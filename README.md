@@ -1,7 +1,13 @@
-- 🧠 Hallo here is small trying to leran HTML CSS JAVA-SCRIPT BOOTSTARP SASS EXPRESS REACT 👨🏼‍🎓
+- 🧠 Hallo here is small trying to learn : HTML / CSS / JAVA-Script / BOOTSTARP / SASS / EXPRESS / REACT 👨🏼‍🎓
 
 #  Let us start!
-## do not forget I am martial-art player before anything else!
+## Do not forget I am martial-art player before anything else!
+
+- 👋 Hi, I’m Barry
+- 👀 I’m interested in Sport
+- 🌱 I’m currently learning WebDev
+- 💞️ I’m looking to collaborate on HTML, CSS , Java scripts small projects
+- 📫 How to reach me 01578444661 whatsup or mbrsyr@yahoo.com
 
 ![barry](src/images/about1.jpg) - Do you like sport :muscle: ?
 
