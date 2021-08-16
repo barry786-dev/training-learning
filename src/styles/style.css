@@ -26,9 +26,36 @@
   font-size: 62.5%;
 }
 
-@media (max-width: 1000px) {
+/* classes to draw a moving line over the a link*/
+.line-over-decoration::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: #ff0000;
+  position: relative;
+  top: -0.3em;
+  left: 0;
+  right: 0;
+  transform: scale(0, 1);
+  transition: transform ease-in-out 250ms;
+}
+
+.line-over-decoration:hover::before {
+  transform: scale(1, 1);
+}
+
+.line-over-decoration.active:hover:before {
+  transform: scale(0, 0);
+}
+
+/* end of classes to draw a moving line over the a link*/
+@media (max-width: 1115px) {
   .logo-part {
     justify-content: center;
+  }
+
+  .line-over-decoration::before {
+    display: none;
   }
 }
 body {
@@ -40,54 +67,56 @@ body {
 }
 
 header {
-  position: fixed;
-  z-index: 999;
   /* display: flex;
   align-items: center; */
   width: 100%;
-  height: 4em;
-  background-color: #ff0000;
 }
 header .bjj-sale {
+  position: fixed;
+  top: 0;
+  height: 2em;
+  background-color: #ff0000;
   color: white;
   font-size: 2.5rem;
   font-weight: 200;
   text-align: center;
   padding-top: 0.3em;
+  z-index: 999;
 }
-
-.header-section {
-  position: relative;
-  top: 8vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.Socialmedia {
+header .Socialmedia {
+  position: fixed;
+  width: 100%;
+  top: 2em;
   display: flex;
   font-size: 2rem;
+  background-color: #f8f8ff;
+  height: 4em;
+  align-items: center;
+  z-index: 990;
 }
-.Socialmedia a {
+header .Socialmedia a {
   text-decoration: none;
   padding: 0.3em;
   color: black;
   font-family: Hahmlet;
+  padding-left: 1em;
 }
-.Socialmedia a:hover {
+header .Socialmedia a:hover {
   color: #ff0000;
 }
-.Socialmedia .header-contact {
-  flex-grow: 4;
+header .Socialmedia .header-contact {
+  flex-grow: 1;
 }
 
 .logo-part {
-  display: flex;
-  align-items: center;
+  position: relative;
+  top: 6em;
   width: 100%;
   height: 15vh;
   min-height: 100px;
   background-color: #ff0000;
   opacity: 0.9;
+  display: flex;
 }
 .logo-part .logo-image {
   padding: 2em;
@@ -97,6 +126,12 @@ header .bjj-sale {
 }
 
 /* Navigation Styling */
+.main-nav.sticky {
+  position: fixed;
+  top: 7.5em;
+  width: 100%;
+}
+
 .nav-toggle {
   display: none;
 }
@@ -138,7 +173,10 @@ header .bjj-sale {
 
 .main-nav {
   position: relative;
-  top: 3%;
+  top: 6em;
+  height: 0;
+}
+.main-nav ul {
   background: black;
   text-align: left;
   z-index: 900;
@@ -146,8 +184,6 @@ header .bjj-sale {
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 10ms ease-in-out;
-}
-.main-nav ul {
   list-style: none;
 }
 .main-nav li {
@@ -224,7 +260,7 @@ header .bjj-sale {
     transform-origin: top;
   }
 }
-.nav-toggle:checked ~ .main-nav {
+.nav-toggle:checked ~ .main-nav ul {
   transform: scale(1, 1);
 }
 
@@ -233,57 +269,34 @@ header .bjj-sale {
   transition: opacity 250ms ease-in-out 50ms;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1115px) {
   /*styling the nav for desktop*/
   .nav-toggle-wrapper {
     display: none;
   }
 
-  .main-nav {
-    transform: scale(1, 1);
-  }
-  .main-nav a {
-    opacity: 1;
-    position: relative;
-  }
-  .main-nav li {
-    margin-bottom: unset;
-    padding: 1em;
-  }
   .main-nav ul {
+    transform: scale(1, 1);
     display: flex;
     align-items: center;
   }
-  .main-nav .sub-nav {
+  .main-nav ul a {
+    opacity: 1;
     position: relative;
   }
-  .main-nav .sub-nav .sub-nav-content {
+  .main-nav ul li {
+    margin-bottom: unset;
+    padding: 1em;
+  }
+  .main-nav ul .sub-nav {
+    position: relative;
+  }
+  .main-nav ul .sub-nav .sub-nav-content {
     position: absolute;
     left: 0;
     background: black;
   }
 }
-.line-over-decoration::before {
-  content: "";
-  display: block;
-  height: 4px;
-  background: #ff0000;
-  position: absolute;
-  top: -0.3em;
-  left: 0;
-  right: 0;
-  transform: scale(0, 1);
-  transition: transform ease-in-out 250ms;
-}
-
-.line-over-decoration:hover::before {
-  transform: scale(1, 1);
-}
-
-.line-over-decoration.active:hover:before {
-  transform: scale(0, 0);
-}
-
 /* @media (max-width: 2000px) {
   html {
     font-size: 0.7vw;

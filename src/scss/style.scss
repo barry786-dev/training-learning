@@ -44,15 +44,34 @@ $bg-opacity: 0.9;
 :root {
   font-size: 62.5%;
 }
+/* classes to draw a moving line over the a link*/
+.line-over-decoration::before{
+  content: '';
+  display: block;
+  height: 4px;
+  background: $bg-header-clr;
+  position: relative;
+  top: -0.3em;
+  left: 0;
+  right: 0;
+  transform: scale(0, 1);
+  transition: transform ease-in-out 250ms;
+}
+.line-over-decoration:hover::before{
+  transform: scale(1 , 1);
+}
+.line-over-decoration.active:hover:before{
+  transform: scale(0 , 0);
+}
+/* end of classes to draw a moving line over the a link*/
 
-@media (max-width: 1000px) {
+@media (max-width: 1115px) {
   .logo-part{
     justify-content: center;
   }
-  // .logo-image {
-  //   right: 0;
-  //   left: 0;
-  // }  
+  .line-over-decoration::before{
+    display: none;
+  } 
 }
 
 body {
@@ -62,55 +81,61 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
+
 header{
-  position: fixed;
-  z-index: 999;
+  // position: fixed;
+  // z-index: 999;
   /* display: flex;
   align-items: center; */
   width: 100%;
-  height: 4em;
-  background-color: $bg-header-clr;
-  
   .bjj-sale{
+    position: fixed;
+    top: 0;
+    height: 2em;
+    background-color: $bg-header-clr;
     color: white;
     font-size: 2.5rem;
     font-weight: 200;
     text-align: center;
     padding-top: 0.3em;
+    z-index: 999;
     // transform: translateX(100%);
     // animation: scrolling-sale 30s linear infinite;
   }
-}
-.header-section{
-  position: relative;
-  top: 8vh;
-  display: flex;
-  flex-direction: column;
-}
-.Socialmedia{
-  display: flex;
-  font-size: 2rem;
-  a {
-    text-decoration: none;
-    padding: 0.3em;
-    color: black;
-    font-family: Hahmlet;
-  }
-  a:hover{
-    color: $bg-header-clr;
-  }
-  .header-contact{
-    flex-grow: 4;
+  .Socialmedia{
+    position: fixed;
+    width: 100%;
+    top: 2em;
+    display: flex;
+    font-size: 2rem;
+    background-color: $bg-light;
+    height: 4em;
+    align-items: center;
+    z-index: 990;
+    a {
+      text-decoration: none;
+      padding: 0.3em;
+      color: black;
+      font-family: Hahmlet;
+      padding-left: 1em;
+    }
+    a:hover{
+      color: $bg-header-clr;
+    }
+    .header-contact{
+      flex-grow: 1;
+    }
   }
 }
 .logo-part {
-  display: flex;
-  align-items: center;
+  position: relative;
+  top: 6em;
   width: 100%;
   height: 15vh;
   min-height: 100px;
   background-color: $bg-header-clr;
   opacity: $bg-opacity;
+  display: flex;
   .logo-image {
     padding: 2em;
     width: 500px;
@@ -135,6 +160,11 @@ header{
   
 // }
 /* Navigation Styling */ 
+.main-nav.sticky{
+  position: fixed;
+  top: 7.5em;
+  width: 100%;
+}
 .nav-toggle{
   display: none;
 }
@@ -171,9 +201,14 @@ header{
     cursor: pointer;
   }
 }
+.main-nav-stuck{
+
+}
 .main-nav {
   position: relative;
-  top: 3%;
+  top: 6em;
+  height: 0;
+  ul {
   background: $bg-black;
   text-align: left;
   z-index: 900;
@@ -181,9 +216,9 @@ header{
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 10ms ease-in-out;
-  ul {
-    list-style: none;
+  list-style: none;
   }
+ 
   li {
     margin-bottom: 1em;
     margin-left: 1em;
@@ -245,6 +280,81 @@ header{
     color: $bg-header-clr;
   } 
 }
+
+// .main-nav {
+//   position: relative;
+//   top: 8em;
+//   background: $bg-black;
+//   text-align: left;
+//   z-index: 900;
+//   width: 100%;
+//   transform: scale(1, 0);
+//   transform-origin: top;
+//   transition: transform 10ms ease-in-out;
+//   ul {
+//     list-style: none;
+//   }
+//   li {
+//     margin-bottom: 1em;
+//     margin-left: 1em;
+//   }
+//   a {
+//     color: $bg-light;
+//     text-decoration: none;
+//     font-family: 'Fjalla One', sans-serif;
+//     font-size: 2.5rem;
+//     text-transform: uppercase;
+//     opacity: 0;
+//     transition: opacity 150ms ease-in-out;
+//   }
+//  a:hover {
+//     color: $bg-header-clr;
+    
+//   }
+//   .sub-nav a {
+//     cursor: default;
+//   }
+//   .sub-nav .accordion-title icon{
+//     float: right;
+//   }
+//   .sub-nav .accordion-title icon::before {
+//     content: "";
+//     height: 20px;
+//     width: 2px;
+//     background-color: white;
+//     position: relative;
+//     top: 0;
+//     left: 11px;
+//     display: inline-block;
+//   }
+//   .sub-nav .accordion-title icon::after {
+//     content: "";
+//     height: 2px;
+//     width: 20px;
+//     background-color: white;
+//     position: relative;
+//     top: -9px;
+//     left: 0px;
+//     display: inline-block;
+//     transform: rotate(0);
+//     transition: ease all 0.6s;
+//   }
+//   .sub-nav .sub-nav-content a {
+//     cursor: pointer;
+//   }
+//   .sub-nav .sub-nav-content {
+//     display: none; /*hiding the sub nav if it not hovered*/
+//   }
+//   .sub-nav:hover .sub-nav-content {
+//     display: block; /*make sub-nav appear when hovering*/
+//     animation: fade_in_show 250ms ease-in-out both;;
+    
+//   }
+//   .active{ /*style the menu item of the active page - see the .active @media bellow too*/
+//     cursor: default;
+//     color: $bg-header-clr;
+//   } 
+// }
 @keyframes fade_in_show {
   0% {
        opacity: 0;
@@ -259,7 +369,7 @@ header{
   }
 }
 
-.nav-toggle:checked ~.main-nav{
+.nav-toggle:checked ~.main-nav ul{
   transform: scale(1 ,1);
 
 }
@@ -269,12 +379,14 @@ header{
   transition: opacity 250ms ease-in-out 50ms;
 
 }
-@media screen and (min-width: 1000px) { /*styling the nav for desktop*/
+@media screen and (min-width: 1115px) { /*styling the nav for desktop*/
   .nav-toggle-wrapper{
     display: none;
   }
-  .main-nav {
+  .main-nav ul {
     transform: scale(1, 1);
+    display: flex;
+    align-items: center;
   a {
     opacity: 1;
     position: relative;
@@ -283,28 +395,6 @@ header{
     margin-bottom: unset;
     padding: 1em;
   }
-  ul {
-    display: flex;
-    align-items: center;
-  }
-  // a::before{
-  //   content: '';
-  //   display: block;
-  //   height: 4px;
-  //   background: $bg-header-clr;
-  //   position: absolute;
-  //   top: -0.3em;
-  //   left: 0;
-  //   right: 0;
-  //   transform: scale(0 , 1);
-  //   transition: transform ease-in-out 250ms;
-  // }
-  // a:hover::before{
-  //   transform: scale(1 , 1);
-  // }
-  // .active:hover:before{
-  //   transform: scale(0 , 0);
-  // }
   .sub-nav{
     position: relative;
   }
@@ -316,24 +406,6 @@ header{
   }
   }
 }
-.line-over-decoration::before{
-    content: '';
-    display: block;
-    height: 4px;
-    background: $bg-header-clr;
-    position: absolute;
-    top: -0.3em;
-    left: 0;
-    right: 0;
-    transform: scale(0 , 1);
-    transition: transform ease-in-out 250ms;
-  }
-  .line-over-decoration:hover::before{
-    transform: scale(1 , 1);
-  }
-  .line-over-decoration.active:hover:before{
-    transform: scale(0 , 0);
-  }
 
 
 /* @media (max-width: 2000px) {
